@@ -1,0 +1,11 @@
+usage: %1$s [options] <exe> [args ...]
+
+Bind to any available TCP port and listen for connections.  When a
+connection is accepted, run the given executable with the given
+arguments, and with the new connection on stdin, stdout, and stderr.
+
+Options:
+	-h, --help:             Print this message.
+
+	--version:              Show version information.
+	--argv0 <arg>:          Set argv[0] (defaults to <exe>).
