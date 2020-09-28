@@ -4,6 +4,7 @@
  * in the LICENSE file.
  */
 
+#define _GNU_SOURCE
 #include <ctype.h>
 #include <err.h>
 #include <errno.h>
@@ -140,7 +141,7 @@ int serve(struct opts *opts)
 	}
 	struct sockaddr_in sin;
 	socklen_t len = sizeof(sin);
-	r = getsockname(s, &sin, &len);
+	r = getsockname(s, (struct sockaddr*)&sin, &len);
 	if (r<0) {
 		err(1, "getsockname");
 	}
@@ -149,7 +150,7 @@ int serve(struct opts *opts)
 	signal(SIGCHLD, sigchld_handler);
 	for(;;) {
 		len = sizeof(sin);
-		int s2 = accept(s, &sin, &len);
+		int s2 = accept(s, (struct sockaddr*)&sin, &len);
 		if (s2<0) {
 			perror("accept");
 			continue;

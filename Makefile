@@ -9,7 +9,7 @@ DATADIR ?= $(PREFIX)/share
 MANDIR ?= $(DATADIR)/man
 
 CFLAGS ?= -O2
-CFLAGS += -std=c99 -Wall -Wextra -Wno-unused-parameter -fno-strict-aliasing
+CFLAGS += -std=c99 -Werror -Wall -Wextra -Wno-unused-parameter -fno-strict-aliasing
 CPPFLAGS += -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64
 
 SRCS := main.c usage.c
